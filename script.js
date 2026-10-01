@@ -5,40 +5,8 @@ const updateHeader = () => header?.classList.toggle('is-scrolled', window.scroll
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
 
-// Integração WhatsApp: um único número configurável para todos os CTAs.
+// Os CTAs já possuem o endereço exato no HTML, funcionando também sem JavaScript.
 const config = window.PETSHOP_CONFIG ?? {};
-const phone = String(config.whatsappNumber ?? '').trim();
-const hasPhone = /^[1-9]\d{9,14}$/.test(phone);
-const dialog = document.querySelector('#contact-dialog');
-let dialogTrigger;
-
-document.querySelectorAll('[data-whatsapp]').forEach((link) => {
-  if (hasPhone) {
-    const service = link.dataset.service;
-    const message = service
-      ? `Olá! Gostaria de saber sobre ${service} para o meu pet na Pata & Prosa.`
-      : config.whatsappMessage || 'Olá! Quero agendar uma visita para meu pet.';
-    link.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', `${link.getAttribute('aria-label')}, em nova aba`);
-    return;
-  }
-
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    dialogTrigger = link;
-    if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
-    else window.alert('Página de demonstração. O WhatsApp do petshop ainda não foi disponibilizado.');
-  });
-});
-
-dialog?.addEventListener('close', () => dialogTrigger?.focus({ preventScroll: true }));
-dialog?.addEventListener('click', (event) => {
-  if (event.target !== dialog) return;
-  const rect = dialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-});
 
 // Só habilita redes sociais quando houver URL HTTPS válido em config.js.
 document.querySelectorAll('[data-social]').forEach((placeholder) => {
@@ -52,7 +20,7 @@ document.querySelectorAll('[data-social]').forEach((placeholder) => {
     link.textContent = placeholder.childNodes[0].textContent.trim();
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', `${link.textContent} da Pata & Prosa, em nova aba`);
+    link.setAttribute('aria-label', `${link.textContent} da Pet shop Bichos e Caprichos, em nova aba`);
     placeholder.replaceWith(link);
   } catch { /* Uma integração incompleta mantém o estado "em breve". */ }
 });
