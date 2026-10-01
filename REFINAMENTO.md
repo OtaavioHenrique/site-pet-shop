@@ -1,7 +1,7 @@
 # Revisão final — Pet shop Bichos e Caprichos
 
 - Marca oficial no título, metadados, navbar, apresentação, endereço, rodapé e descrição alternativa da foto.
-- Todos os CTAs apontam exatamente para `https://wa.me/5569999489222`, sem mensagens ou parâmetros adicionais.
+- Todos os CTAs usam `https://wa.me/5569999489222?text=...`, com mensagens codificadas por contexto.
 - Removidos o bloqueio demonstrativo do contato, o diálogo sem telefone e o código que sobrescrevia os links.
 - Conteúdo público na raiz, compatível com a configuração existente do GitHub Pages.
 - Mantidos os 12 preços confirmados e as inclusões de 4 banhos + 1 tosa higiênica em cada pacote.

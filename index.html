@@ -2,12 +2,14 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- CSP antes de qualquer recurso. Diretivas exclusivas de headers ficam em vercel.json. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://images.unsplash.com; font-src 'self'; connect-src 'none'; frame-src https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#a52e60">
   <meta name="description" content="Pet shop Bichos e Caprichos em Rolim de Moura. Banhos, tosas, pacotes mensais e Táxi Dog. Agende sua visita pelo WhatsApp.">
   <title>Pet shop Bichos e Caprichos | Banho, tosa e Táxi Dog em Rolim de Moura</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23a52e60'/%3E%3Ctext x='6' y='27' font-family='Georgia' font-weight='bold' font-size='22' fill='%23f5e4c2'%3Ebc%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js" defer></script>
   <script src="script.js" defer></script>
@@ -142,7 +144,7 @@
       </div>
       <div class="map-wrap reveal">
         <!-- GOOGLE MAPS: busca pelo endereço informado. Confira o pino antes de divulgar. -->
-        <iframe title="Mapa: Rua B, 6180, Rolim de Moura" src="https://maps.google.com/maps?q=Rua%20B%2C%206180%2C%20Rolim%20de%20Moura&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="650" height="440" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <iframe title="Mapa: Rua B, 6180, Rolim de Moura" src="https://maps.google.com/maps?q=Rua%20B%2C%206180%2C%20Rolim%20de%20Moura&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="650" height="440" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <p>Rua B, 6180 · Rolim de Moura</p>
       </div>
     </section>
